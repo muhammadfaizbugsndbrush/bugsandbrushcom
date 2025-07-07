@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BugsAndBrushes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%);
+      color: #495057;
+      min-height: 100vh;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 127, 80, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 127, 80, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 127, 80, 0.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    .navbar {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 127, 80, 0.2);
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 20px rgba(255, 127, 80, 0.1);
+    }
+    .navbar-brand {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #ff7f50, #ff6347, #ff4500);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 3s ease-in-out infinite;
+    }
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .navbar-nav .nav-link {
+      color: #495057 !important;
+      font-weight: 500;
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem !important;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #ff7f50 !important;
+      background: rgba(255, 127, 80, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255, 127, 80, 0.2);
+    }
+    .navbar-nav .nav-link.active {
+      background: linear-gradient(45deg, #ff7f50, #ff6347);
+      color: #ffffff !important;
+      box-shadow: 0 4px 15px rgba(255, 127, 80, 0.3);
+    }
+    section {
+      padding: 120px 0 80px;
+      position: relative;
+    }
+    .landing {
+      min-height: 100vh;
+      background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.8)),
+        radial-gradient(circle at 30% 70%, rgba(255, 127, 80, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 69, 0, 0.08) 0%, transparent 50%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .landing::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 127, 80, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 69, 0, 0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .landing::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        linear-gradient(45deg, transparent 30%, rgba(255, 127, 80, 0.05) 50%, transparent 70%),
+        linear-gradient(-45deg, transparent 30%, rgba(255, 107, 107, 0.05) 50%, transparent 70%);
+      animation: artFlow 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes artFlow {
+      0%, 100% { transform: translateX(-50px) translateY(-50px); }
+      50% { transform: translateX(50px) translateY(50px); }
+    }
+    .landing h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(45deg, #495057, #ff7f50);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      z-index: 2;
+    }
+    .landing .lead {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      color: #6c757d;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+      position: relative;
+      z-index: 2;
+    }
+    .btn-primary {
+      background: linear-gradient(45deg, #ff7f50, #ff6347);
+      border: none;
+      border-radius: 25px;
+      padding: 12px 30px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 127, 80, 0.3);
+      position: relative;
+      z-index: 2;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(45deg, #ff6347, #ff7f50);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 127, 80, 0.4);
+    }
+    .footer {
+      background: rgba(248, 249, 250, 0.95);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255, 127, 80, 0.2);
+      padding: 2rem 0;
+      margin-top: 0;
+    }
+    .footer p {
+      color: #6c757d;
+      margin: 0;
+    }
+    @media (max-width: 768px) {
+      .landing h1 { font-size: 2.2rem; }
+      .landing .lead { font-size: 1rem; }
+      .navbar-brand { font-size: 1.2rem; }
+      .footer { padding: 1rem 0; }
+      section { padding: 90px 0 40px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">BugsAndBrushes</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Main()</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">Bio()</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="artworks.html">ArtRepository()</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="landing">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h1 class="display-3 mb-4">Welcome to BugsAndBrushes</h1>
+          <p class="lead mb-4">Discover creativity through every brushstroke</p>
+          <a href="artworks.html" class="btn btn-primary btn-lg">Explore Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="text-center mb-0">© 2025 Faiz. Code broke, so I picked up a brush.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

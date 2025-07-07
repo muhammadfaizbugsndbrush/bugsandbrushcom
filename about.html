@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BugsAndBrushes - About</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%);
+      color: #495057;
+      min-height: 100vh;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 127, 80, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 127, 80, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 127, 80, 0.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    .navbar {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 127, 80, 0.2);
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 20px rgba(255, 127, 80, 0.1);
+    }
+    .navbar-brand {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #ff7f50, #ff6347, #ff4500);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 3s ease-in-out infinite;
+    }
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .navbar-nav .nav-link {
+      color: #495057 !important;
+      font-weight: 500;
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem !important;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #ff7f50 !important;
+      background: rgba(255, 127, 80, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255, 127, 80, 0.2);
+    }
+    .navbar-nav .nav-link.active {
+      background: linear-gradient(45deg, #ff7f50, #ff6347);
+      color: #ffffff !important;
+      box-shadow: 0 4px 15px rgba(255, 127, 80, 0.3);
+    }
+    section {
+      padding: 120px 0 80px;
+      position: relative;
+    }
+    .about {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+    }
+    .about h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      background: linear-gradient(45deg, #ff7f50, #ff6347);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+    .about-content img {
+      width: 200px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .about .lead {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #6c757d;
+    }
+    .footer {
+      background: rgba(248, 249, 250, 0.95);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255, 127, 80, 0.2);
+      padding: 2rem 0;
+      margin-top: 0;
+    }
+    .footer p {
+      color: #6c757d;
+      margin: 0;
+    }
+    @media (max-width: 768px) {
+      .about h2 { font-size: 2rem; }
+      .about-content img { width: 140px; }
+      .navbar-brand { font-size: 1.2rem; }
+      .footer { padding: 1rem 0; }
+      section { padding: 90px 0 40px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">BugsAndBrushes</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Main()</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="about.html">Bio()</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="artworks.html">ArtRepository()</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="about">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="mb-5">About the Artist</h2>
+          <div class="about-content">
+            <img src="artist.jpg" alt="Artist">
+            <p class="lead">
+              My logic loops? More like infinite existential crises.<br><br>
+              Buttons betrayed me. Layouts ghosted me. And don't even ask about the semicolons.<br><br>
+              So I swapped pixels for paint. Now I let brushes do the compiling.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="text-center mb-0">© 2025 Faiz. Code broke, so I picked up a brush.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
